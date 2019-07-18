@@ -35,4 +35,18 @@ class PolynomTest {
     void divide() {
         assertArrayEquals(expectedResult, p.divide(r));
     }
+
+    @Test
+    void equality() {
+        Polynom[] result = p.divide(r);
+        Polynom result1 = r.multiply(result[0]).plus(result[1]);
+        assertEquals(p, result1);
+    }
+
+    @Test
+    void constructor() {
+        int[] bArray = {-8, 1, -6, 3, 7};
+        Polynom b = new Polynom(bArray);
+        assertEquals(p, b);
+    }
 }

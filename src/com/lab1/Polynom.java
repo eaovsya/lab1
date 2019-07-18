@@ -1,5 +1,7 @@
 package com.lab1;
 
+import java.util.Arrays;
+
 public class Polynom {
     private int[] terms;
     private int degree;
@@ -12,6 +14,12 @@ public class Polynom {
         terms[j] = i;
         countDegree();
     }
+
+    public Polynom(int[] terms) {
+        this.terms = terms;
+        countDegree();
+    }
+
 
     public void countDegree() {
         for (int i = terms.length - 1; i >= 0; i--) {
@@ -54,7 +62,7 @@ public class Polynom {
         return c;
     }
 
-    private Polynom multiply(Polynom a) {
+    public Polynom multiply(Polynom a) {
         Polynom c = new Polynom(0, this.degree + a.degree);
         for (int i = 0; i <= this.degree; i++) {
             for(int j = 0; j <= a.degree; j++) {
@@ -133,6 +141,14 @@ public class Polynom {
             }
         }
         return  true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + Arrays.hashCode(terms);
+        result = 31 * result + degree;
+        return result;
     }
 
     public  static  void main(String[] args) {
